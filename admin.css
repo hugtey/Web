@@ -1,0 +1,283 @@
+/* Thiết lập phông chữ mặc định */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #007BFF;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  background-image: url('https://www.wallpaperflare.com/static/67/123/631/ultra-wide-one-piece-one-piece-wallpaper.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+/* Định dạng tiêu đề */
+h1 {
+  color: #ff6600;
+  font-family: 'YourFont', sans-serif;
+  /* Thay 'YourFont' bằng phông chữ bạn muốn sử dụng */
+  text-shadow: 2px 2px 4px #000;
+}
+
+/* Định dạng nút Thêm người dùng */
+.btn-primary {
+  background-color: #ff6600;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #ff4400;
+}
+
+/* Định dạng khung tìm kiếm */
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchTerm {
+  width: 70%;
+  /* Giảm độ rộng của ô tìm kiếm */
+  padding: 10px;
+  border: 1px solid #ff6600;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #ff6600;
+  font-size: 14px;
+  /* Điều chỉnh kích thước phông chữ */
+}
+
+.searchTerm::placeholder {
+  color: #ff6600;
+  /* Màu của placeholder */
+  font-style: italic;
+  /* Kiểu chữ nghiêng */
+}
+
+.searchButton {
+  width: 100px;
+  /* Tăng kích thước nút tìm kiếm */
+  height: 40px;
+  border: 1px solid #ff6600;
+  background: #ff6600;
+  text-align: center;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 18px;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+
+.searchButton:hover {
+  background: #ff4400;
+}
+
+/* Định dạng bảng */
+.table {
+  width: 80%;
+  /* Giảm độ rộng của bảng */
+  margin: 0 auto;
+  /* Căn giữa bảng */
+  border-collapse: collapse;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.table th,
+.table td {
+  border: 2px solid white;
+  padding: 6px;
+  /* Giảm khoảng cách nội dung trong bảng */
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  /* Điều chỉnh kích thước phông chữ */
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.thead-dark {
+  background-color: #ff6600;
+  color: #fff;
+}
+
+/* Định dạng nút Sửa và Xóa */
+.btn {
+  padding: 5px 10px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn-primary {
+  background-color: #ff6600;
+  color: #fff;
+}
+
+.btn-danger {
+  background-color: #ff3333;
+  color: #fff;
+  font-size: 14px;
+  /* Điều chỉnh kích thước phông chữ */
+}
+
+.btn:hover {
+  background-color: #ff4400;
+}
+
+/* Định dạng nút Xóa */
+.btn-danger:hover {
+  background-color: #ff0000;
+}
+
+/* Hiệu ứng đen trắng cho hình ảnh */
+img {
+  filter: grayscale(0%);
+}
+
+#wrapper {
+  background-color: rgba(0, 0, 0, 0.677);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+}
+#form-signup {
+  max-width: 400px;
+  background: rgba(0, 0, 0, 0.8);
+  flex-grow: 1;
+  padding: 30px 30px 40px;
+  box-shadow: 0px 0px 17px 2px rgb(255 255 255 / 80%);
+  position: relative;
+  
+  
+
+}
+.form-heading {
+  font-size: 25px;
+  color: #f5f5f5;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  border-bottom: 1px solid #fff;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.form-group i {
+  color: #fff;
+  font-size: 14px;
+  padding-top: 5px;
+  padding-right: 10px;
+}
+
+.form-input {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: #f5f5f5;
+  flex-grow: 1;
+}
+.form-input::placeholder {
+  color: #f5f5f5;
+}
+
+.form-submit {
+  background: transparent;
+  border: 1px solid #f5f5f5;
+  color: #fff;
+  width: 100%;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  transition: 0.25s ease-in-out;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.form-submit:hover {
+  border: 1px solid #54a0ff;
+}
+
+
+
+
+
+
+
+
+#form-login {
+  max-width: 400px;
+  background: rgba(0, 0, 0, 0.8);
+  flex-grow: 1;
+  padding: 30px 30px 40px;
+  box-shadow: 0px 0px 17px 2px rgb(255 255 255 / 80%);
+  margin-left: 200px;
+}
+
+.form-group1 {
+  border-bottom: 1px solid #fff;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.form-submit1 {
+  background: transparent;
+  border: 1px solid #f5f5f5;
+  color: #fff;
+  width: 100%;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  transition: 0.25s ease-in-out;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.form-submit1:hover {
+  border: 1px solid #54a0ff;
+}
+.close{
+  position: absolute;
+  top: 0;
+  right: 24px;
+  cursor: pointer;
+  font-size: 19px;
+
+}
+
+
+
+
+.logout {
+  float: right;
+  margin-top: 10px;
+}
+
+.logout a {
+  text-decoration: none;
+  background-color: #ff0000; /* Màu nền nút đăng xuất */
+  color: #fff; /* Màu chữ trắng */
+  padding: 5px 10px;
+  border-radius: 5px; /* Để bo tròn nút */
+}
+
+.logout a:hover {
+  background-color: #cc0000; /* Màu nền khi di chuột qua nút */
+}
