@@ -22,7 +22,7 @@ if (isset($_POST['fullname']) && isset($_POST['username']) && isset($_POST['pass
     $checkUsernameSql = "SELECT uid FROM tbl_users WHERE username='$newUsername' AND uid != $uid";
     $checkResult = mysqli_query($conn, $checkUsernameSql);
     if (mysqli_num_rows($checkResult) > 0) {
-        echo '<script>alert("Tên người dùng đã tồn tại. Vui lòng chọn một tên người dùng khác.");</script>';
+        echo '<script>alert("Tên người dùng đã tồn tại. Vui lòng chọn một tên người dùng khác");</script>';
     } else {
         $updatesql = "UPDATE tbl_users SET fullname='$fullname', username='$newUsername', password='$password', gender='$gender', email='$email' WHERE uid='$uid'";
         if (mysqli_query($conn, $updatesql)) {

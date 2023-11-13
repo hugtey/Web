@@ -7,7 +7,15 @@ if (isset($_GET['uid'])) {
     $uid = $_GET['uid'];
     $edit_sql = "SELECT * FROM tbl_users WHERE uid=$uid";
     $result = mysqli_query($conn, $edit_sql);
-    $row = mysqli_fetch_assoc($result);
+
+    // Kiểm tra xem truy vấn có thành công không
+    if ($result) {
+        $row = mysqli_fetch_assoc($result);
+    } else {
+        // Xử lý lỗi, có thể log lỗi hoặc hiển thị thông báo
+        echo "Lỗi truy vấn SQL: " . mysqli_error($conn);
+        die(); // Dừng chương trình nếu có lỗi
+    }
 }
 
 if (isset($_POST['fullname']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['gender'])) {
@@ -28,7 +36,7 @@ if (isset($_POST['fullname']) && isset($_POST['username']) && isset($_POST['pass
         // Tên người dùng không bị trùng, cập nhật thông tin người dùng
         $updatesql = "UPDATE tbl_users SET fullname='$fullname', username='$newUsername', password='$password', gender='$gender', email='$email' WHERE uid='$uid'";
         if (mysqli_query($conn, $updatesql)) {
-            header("Location: admin_user.php");
+            header("Location: user.php");
         }
     }
 }
@@ -61,7 +69,7 @@ if (isset($_POST['fullname']) && isset($_POST['username']) && isset($_POST['pass
         <h1>
             Sửa thông tin người dùng
 
-            <form action="admin_edit_user.php" method="post">
+            <form action="" method="post">
                 <input type="hidden" name="uid" value="<?php echo $uid; ?>" id="" />
                 <div class="form-group">
                     <label for="fullname"> Họ và tên </label>

@@ -48,14 +48,14 @@
       <h1 class="form-heading">Form đăng nhập</h1>
       <div class="form-group">
         <i class="far fa-user"></i>
-        <input type="text" class="form-input" name="username" value="<?php if(isset($_COOKIE['username'])) echo $_COOKIE['username'];  ?>" placeholder="Tên đăng nhập">
+        <input type="text" class="form-input" name="username" value="<?php if (isset($_COOKIE['username'])) echo $_COOKIE['username'];  ?>" placeholder="Tên đăng nhập">
       </div>
       <div class="form-group">
         <i class="fas fa-key"></i>
-        <input type="password" class="form-input" name="password" value="<?php if(isset($_COOKIE['password'])) echo $_COOKIE['password']; ?>" placeholder="Mật khẩu">
+        <input type="password" class="form-input" name="password" value="<?php if (isset($_COOKIE['password'])) echo $_COOKIE['password']; ?>" placeholder="Mật khẩu">
       </div>
       <div class="remember-cookie" style="color: white;">
-        <input type="checkbox" name="remember" value="<?php if(isset($_COOKIE['username'])) echo 'checked';  ?>">Ghi nhớ đăng nhập
+        <input type="checkbox" name="remember" value="<?php if (isset($_COOKIE['username'])) echo 'checked';  ?>">Ghi nhớ đăng nhập
       </div>
       <input type="submit" name="submit" value="Đăng nhập" class="form-submit1">
     </form>
@@ -63,4 +63,7 @@
   </div>
 
 </body>
+
 </html>
+
+

@@ -2,8 +2,6 @@
 session_start();
 $conn = mysqli_connect("localhost", "root", "", "hungtran");
 
-$uid = $_SESSION['uid'];
-
 if (isset($_GET['name_product'])) {
     $name_product = $_GET['name_product'];
     $query_product = "SELECT * FROM tbl_products WHERE name_product LIKE '%$name_product%'";
@@ -12,6 +10,7 @@ if (isset($_GET['name_product'])) {
 }
 
 $result_product = mysqli_query($conn, $query_product);
+
 
 $query_user = "SELECT * FROM tbl_users";
 $result_user = mysqli_query($conn, $query_user);
@@ -27,7 +26,7 @@ $result_user = mysqli_query($conn, $query_user);
 
 <body>
     <h1>Sản phẩm</h1>
-
+    <input type="hidden" name="uid" value="<?php echo $user['uid']; ?>">
     <div style="position: fixed; top: 10px; right: 10px; background-color: #0074D9; color: #fff; padding: 10px 20px;">
         <a href="index.php" style="text-decoration: none; color: #fff;">Đăng xuất</a>
     </div>
@@ -59,17 +58,12 @@ $result_user = mysqli_query($conn, $query_user);
             echo "</td>";
             echo "</tr>";
         }
+
+        echo "<tr>";
+        echo "<td><a href='user_edit.php?uid={$_SESSION['uid']}' style='position:fixed; top: 10px; right: 150px; background-color: #0074D9;color: #fff;text-decoration: none;padding: 5px 10px;border-radius: 5px;display: inline-block;transition: background-color 0.3s;'onmouseover='this.style.backgroundColor=\"#0056b3\"' onmouseout='this.style.backgroundColor=\"#0074D9\"'>Sửa thông tin người dùng</a></td>";
+        echo "</tr>";
         ?>
     </table>
-    <?php
-    while ($r = mysqli_fetch_assoc($result_user)) {
-    ?>
-        <div style="position: fixed; top: 10px; right: 150px; background-color: #0074D9; color: #fff; padding: 10px 20px;">
-            <a href="user_edit.php?uid=<?php echo $r['uid']; ?>" style="text-decoration: none; color: #fff;">Sửa thông tin người dùng</a>
-        </div>
-    <?php
-    }
-    ?>
 </body>
 
 </html>
