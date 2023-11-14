@@ -76,4 +76,23 @@ $result = mysqli_query($conn, $query);
     </table>
 </body>
 
+
+
+
+<style>
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #28a745;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        margin-right: 10px;
+    }
+
+    .btn:hover {
+        background-color: #218838;
+    }
+</style>
 </html>

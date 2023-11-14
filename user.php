@@ -53,8 +53,8 @@ $result_user = mysqli_query($conn, $query_user);
             echo "<td>{$product['price_product']}</td>";
             echo "<td><img src='{$product['image']}' width='200px'></td>";
             echo "<td>";
-            echo "<a href='edit.php?uid={$product['uid']}' class='btn btn-primary'>Thêm vào giỏ hàng</a>";
-            echo "<a onclick='return confirm(\"Bạn có muốn xóa không ?\")' href='admin_delete_product.php?uid={$product['uid']}' class='btn btn-danger'>Mua</a>";
+            echo "<a href='cart.php?uid={$product['uid']}' class='btn btn-primary'>Thêm vào giỏ hàng</a>";
+            echo "<a href='edit.php?uid={$product['uid']}' class='btn btn-primary'>Mua</a>";
             echo "</td>";
             echo "</tr>";
         }
@@ -66,4 +66,22 @@ $result_user = mysqli_query($conn, $query_user);
     </table>
 </body>
 
+
+
+<style>
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #28a745;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        margin-right: 10px;
+    }
+
+    .btn:hover {
+        background-color: #218838;
+    }
+</style>
 </html>
