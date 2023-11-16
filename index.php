@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['uid'])) {
   // Nếu đã đăng nhập, chuyển hướng đến trang user.php hoặc admin.php tùy vào quyền
   if ($_SESSION['username'] == 'admin') {
-    header('Location: admin.php');
+    header('Location: admin_product.php');
   } else {
     header('Location: user.php');
   }

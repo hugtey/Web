@@ -93,7 +93,9 @@ if (isset($_POST['fullname']) && isset($_POST['username']) && isset($_POST['pass
                     <input type="radio" name="rank" value="silver" <?php echo ($row['rank'] == 'silver') ? 'checked' : ''; ?>>
                     <h2>Đồng</h2>
                     <input type="radio" name="rank" value="bronze" <?php echo ($row['rank'] == 'bronze') ? 'checked' : ''; ?>>
-                
+                    <h2>Không có</h2>
+                    <input type="radio" name="rank" value="no rank" <?php echo ($row['rank'] == 'no rank') ? 'checked' : ''; ?>>
+
                 <div class="form-group">
                         <label for="email"> Gmail </label>
                         <input type="text" name="email" class="form-control" value="<?php echo $row['email'] ?>">

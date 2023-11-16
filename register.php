@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
     if (!empty($username) && !empty($fullname) && !empty($password) && !empty($email) && !empty($gender)) {
         $check_query = "SELECT * FROM tbl_users WHERE username='$username'";
         $result = $conn->query($check_query);
-        $sql = "INSERT INTO `tbl_users` (`fullname`,`username`,`password`,`email`,`gender`) VALUES ('$fullname','$username','$password','$email','$gender') ";
+        $sql = "INSERT INTO `tbl_users` (`fullname`,`username`,`password`,`email`,`gender`,`rank`) VALUES ('$fullname','$username','$password','$email','$gender', 'no rank') ";
         if ($result->num_rows > 0) {
             echo "Tài khoản đã có người sử dụng, vui lòng chọn tài khoản khác!";
         } else {
