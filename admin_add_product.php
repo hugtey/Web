@@ -2,6 +2,7 @@
 session_start();
 include 'connect.php';
 
+
 if (isset($_POST['add_product'])) {
     $name_product = $_POST['name_product'];
     $num_product = $_POST['num_product'];

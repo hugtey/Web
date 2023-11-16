@@ -2,6 +2,10 @@
 session_start();
 $conn = mysqli_connect("localhost", "root", "", "hungtran");
 
+if (!isset($_SESSION['uid'])) {
+    header('Location: index.php');
+    exit();
+}
 if (isset($_GET['name_product'])) {
     $name_product = $_GET['name_product'];
     $query_product = "SELECT * FROM tbl_products WHERE name_product LIKE '%$name_product%'";
@@ -12,23 +16,28 @@ if (isset($_GET['name_product'])) {
 $result_product = mysqli_query($conn, $query_product);
 
 
-$query_user = "SELECT * FROM tbl_users";
+$query_user = "SELECT * FROM tbl_users WHERE uid = {$_SESSION['uid']}";
 $result_user = mysqli_query($conn, $query_user);
-
+$user = mysqli_fetch_assoc($result_user);
 ?>
 
 <!DOCTYPE html>
 <html>
 
 <head>
+<link rel="stylesheet" href="user.css">
     <title>Sản phẩm</title>
 </head>
 
 <body>
+    <div class="user-info">
+        <p class="rank">Hạng tài khoản: <?php echo $user['rank']; ?></p>
+        <p class="balance">Số dư tài khoản: <?php echo number_format($user['balance'], 0, ',', '.');?> VNĐ</p>
+    </div>
     <h1>Sản phẩm</h1>
     <input type="hidden" name="uid" value="<?php echo $user['uid']; ?>">
     <div style="position: fixed; top: 10px; right: 10px; background-color: #0074D9; color: #fff; padding: 10px 20px;">
-        <a href="index.php" style="text-decoration: none; color: #fff;">Đăng xuất</a>
+        <a href="logout.php" style="text-decoration: none; color: #fff;">Đăng xuất</a>
     </div>
     <h2>Danh sách sản phẩm</h2>
     <form action="" class="search">
@@ -42,6 +51,7 @@ $result_user = mysqli_query($conn, $query_user);
             <th>Tên sản phẩm</th>
             <th>Số lượng</th>
             <th>Giá</th>
+            <th>Ảnh</th>
             <th>Tùy chọn</th>
         </tr>
         <?php
@@ -50,11 +60,10 @@ $result_user = mysqli_query($conn, $query_user);
             echo "<tr>";
             echo "<td>{$product['name_product']}</td>";
             echo "<td>{$product['num_product']}</td>";
-            echo "<td>{$product['price_product']}</td>";
+            echo "<td>" . number_format($product['price_product'], 0, ',', '.') . "</td>";
             echo "<td><img src='{$product['image']}' width='200px'></td>";
             echo "<td>";
-            echo "<a href='cart.php?uid={$product['uid']}' class='btn btn-primary'>Thêm vào giỏ hàng</a>";
-            echo "<a href='edit.php?uid={$product['uid']}' class='btn btn-primary'>Mua</a>";
+            echo "<a href='pay.php?uid={$product['uid']}' class='btn btn-primary'>Mua</a>";
             echo "</td>";
             echo "</tr>";
         }
@@ -65,23 +74,4 @@ $result_user = mysqli_query($conn, $query_user);
         ?>
     </table>
 </body>
-
-
-
-<style>
-    .btn {
-        display: inline-block;
-        padding: 10px 20px;
-        text-decoration: none;
-        color: #fff;
-        background-color: #28a745;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-        margin-right: 10px;
-    }
-
-    .btn:hover {
-        background-color: #218838;
-    }
-</style>
 </html>

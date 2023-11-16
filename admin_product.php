@@ -2,6 +2,10 @@
 session_start();
 $conn = mysqli_connect("localhost", "root", "", "hungtran");
 
+if (!isset($_SESSION['uid'])) {
+    header('Location: index.php');
+    exit();
+}
 if (isset($_GET['name_product'])) {
     $name_product = $_GET['name_product'];
     $query = "SELECT * FROM tbl_products WHERE name_product LIKE '%$name_product%'";
@@ -25,7 +29,7 @@ $result = mysqli_query($conn, $query);
         <a href="admin_user.php" style="text-decoration: none; color: #fff;">Quản lý người dùng</a>
     </div>
     <div style="position: fixed; top: 10px; right: 10px; background-color: #0074D9; color: #fff; padding: 10px 20px;">
-        <a href="index.php" style="text-decoration: none; color: #fff;">Đăng xuất</a>
+        <a href="logout.php" style="text-decoration: none; color: #fff;">Đăng xuất</a>
     </div>
     <h2>Thêm sản phẩm</h2>
     <form action="admin_add_product.php" method="POST" enctype="multipart/form-data">
@@ -61,7 +65,7 @@ $result = mysqli_query($conn, $query);
             <tr>
                 <td><?php echo $r['name_product']; ?></td>
                 <td><?php echo $r['num_product']; ?></td>
-                <td><?php echo $r['price_product']; ?></td>
+                <td><?php echo number_format($r['price_product'], 0, ',', '.'); ?></td>
                 <td>
                     <img src="<?php echo $r['image']; ?>" width="200px">
                 </td>

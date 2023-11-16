@@ -1,137 +1,38 @@
-/* Thiết lập phông chữ mặc định */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #007BFF;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    background-image: url('https://www.wallpaperflare.com/static/67/123/631/ultra-wide-one-piece-one-piece-wallpaper.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-  }
-  
-  /* Định dạng tiêu đề */
-  h1 {
-    color: #ff6600;
-    font-family: 'YourFont', sans-serif; /* Thay 'YourFont' bằng phông chữ bạn muốn sử dụng */
-    text-shadow: 2px 2px 4px #000;
-  }
-  
-  /* Định dạng nút Thêm người dùng */
-  .btn-primary {
-    background-color: #ff6600;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-primary:hover {
-    background-color: #ff4400;
-  }
-  
-  /* Định dạng khung tìm kiếm */
-  .search {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .searchTerm {
-    width: 70%; /* Giảm độ rộng của ô tìm kiếm */
-    padding: 10px;
-    border: 1px solid #ff6600;
-    border-right: none;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-    color: #ff6600;
-    font-size: 14px; /* Điều chỉnh kích thước phông chữ */
-  }
-
-  .searchTerm::placeholder {
-    color: #ff6600; /* Màu của placeholder */
-    font-style: italic; /* Kiểu chữ nghiêng */
-  }
-  
-  .searchButton {
-    width: 100px; /* Tăng kích thước nút tìm kiếm */
-    height: 40px;
-    border: 1px solid #ff6600;
-    background: #ff6600;
-    text-align: center;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
-    font-size: 18px;
-    color: #fff;
-    transition: background-color 0.3s;
-  }
-
-  
-  .searchButton:hover {
-    background: #ff4400;
-  }
-  
-/* Định dạng bảng */
-.table {
-    width: 80%; /* Giảm độ rộng của bảng */
-    margin: 0 auto; /* Căn giữa bảng */
-    border-collapse: collapse;
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-  
-  .table th,
-  .table td {
-    border: 2px solid white;
-    padding: 6px; /* Giảm khoảng cách nội dung trong bảng */
-    text-align: center;
-    color: white;
-    font-size: 14px; /* Điều chỉnh kích thước phông chữ */
-    font-family: 'Comic Sans MS', cursive;
-  }
-  
-  .thead-dark {
-    background-color: #ff6600;
-    color: #fff;
-  }
-  
-/* Định dạng nút Sửa và Xóa */
 .btn {
-  padding: 5px 10px;
-  margin: 5px;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
   display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #28a745;
   border-radius: 5px;
   transition: background-color 0.3s;
-}
-
-.btn-primary {
-  background-color: #ff6600;
-  color: #fff;
-}
-
-.btn-danger {
-  background-color: #ff3333;
-  color: #fff;
-  font-size: 14px; /* Điều chỉnh kích thước phông chữ */
+  margin-right: 10px;
 }
 
 .btn:hover {
-  background-color: #ff4400;
+  background-color: #218838;
 }
 
-/* Định dạng nút Xóa */
-.btn-danger:hover {
-  background-color: #ff0000;
+.user-info {
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0074D9;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  max-width: 220px; 
 }
-  
-  /* Hiệu ứng đen trắng cho hình ảnh */
-  img {
-    filter: grayscale(0%);
-  }
-  
 
+.rank, .balance {
+  margin: 0px;
+}
+
+.rank {
+  font-size: 18px;
+}
+
+.balance {
+  font-size: 16px;
+}
 

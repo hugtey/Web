@@ -2,6 +2,10 @@
 session_start();
 $conn = mysqli_connect("localhost", "root", "", "hungtran");
 
+if (!isset($_SESSION['uid'])) {
+    header('Location: index.php');
+    exit();
+}
 if (isset($_GET['fullname'])) {
     $fullname = $_GET['fullname'];
     $query = "SELECT * FROM tbl_users WHERE fullname LIKE '%$fullname%'";
@@ -31,7 +35,7 @@ $result = mysqli_query($conn, $query);
     <div class="container">
         <h1> Danh sách người dùng</h1>
         <div class="logout">
-            <a href="index.php">Đăng xuất</a>
+            <a href="logout.php">Đăng xuất</a>
         </div>
         <div class="logout">
             <a href="admin_product.php">Quản lý sản phẩm</a>
@@ -59,6 +63,8 @@ $result = mysqli_query($conn, $query);
                     <th> Họ và tên </th>
                     <th> Gmail </th>
                     <th> Giới tính </th>
+                    <th> Hạng tài khoản </th>
+                    <th> Số dư tài khoản </th>
                     <th> Thao tác </th>
                 </tr>
             </thead>
@@ -72,6 +78,8 @@ $result = mysqli_query($conn, $query);
                     <td><?php echo $r['fullname']; ?></td>
                     <td><?php echo $r['email']; ?></td>
                     <td><?php echo $r['gender']; ?></td>
+                    <td><?php echo $r['rank']; ?></td>
+                    <td><?php echo $r['balance']; ?></td>
                     <td>
                         <a href="admin_edit_user.php?uid=<?php echo $r['uid']; ?>" class="btn btn-primary">Sửa</a>
                         <a onclick="return confirm('Bạn có muốn xóa không ?')" href="admin_delete_user.php?uid=<?php echo $r['uid']; ?>" class="btn btn-danger">Xóa</a>
@@ -109,6 +117,20 @@ $result = mysqli_query($conn, $query);
                     <h2>Nam</h2>
                     <input type="radio" name="gender" value="female">
                     <h2>Nữ</h2>
+                </div>
+                <div class="form-group">
+                    <i class="far fa-user"></i>
+                    <label class="form-input" for="">Hạng tài khoản: </label>
+                    <input type="radio" name="rank" value="gold">
+                    <h2>Vàng</h2>
+                    <input type="radio" name="rank" value="silver">
+                    <h2>Bạc</h2>
+                    <input type="radio" name="rank" value="bronze">
+                    <h2>Đồng</h2>
+                </div>
+                <div class="form-group">
+                    <i class="far fa-user"></i>
+                    <input type="number" class="form-input" name="balance" placeholder="Số dư tài khoản">
                 </div>
 
                 <input type="submit" name="submit" value="Thêm" class="form-submit">
