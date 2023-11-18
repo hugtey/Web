@@ -22,6 +22,7 @@ if (isset($_POST['fullname']) && isset($_POST['username']) && isset($_POST['pass
     $gender = $_POST['gender'];
     $rank = $_POST['rank'];
     $balance = $_POST['balance'];
+    $role = $_POST['role'];
     $uid = $_POST['uid'];
 
     // Kiểm tra xem tên người dùng mới có bị trùng không
@@ -30,7 +31,7 @@ if (isset($_POST['fullname']) && isset($_POST['username']) && isset($_POST['pass
     if (mysqli_num_rows($checkResult) > 0) {
         echo '<script>alert("Tên người dùng đã tồn tại. Vui lòng chọn một tên người dùng khác");</script>';
     } else {
-        $updatesql = "UPDATE tbl_users SET fullname='$fullname', username='$newUsername', password='$password', gender='$gender', rank='$rank', email='$email', balance='$balance' WHERE uid='$uid'";
+        $updatesql = "UPDATE tbl_users SET fullname='$fullname', username='$newUsername', password='$password', gender='$gender', rank='$rank', email='$email', balance='$balance', role='$role' WHERE uid='$uid'";
         if (mysqli_query($conn, $updatesql)) {
             header("Location: admin_user.php");
         }
@@ -101,6 +102,13 @@ if (isset($_POST['fullname']) && isset($_POST['username']) && isset($_POST['pass
                         <input type="text" name="email" class="form-control" value="<?php echo $row['email'] ?>">
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="role"> Vai trò </label>
+                    <h2>Admin</h2>
+                    <input type="radio" name="role" value="admin" <?php echo ($row['role'] == 'admin') ? 'checked' : ''; ?>>
+                    <h2>User</h2>
+                    <input type="radio" name="role" value="user" <?php echo ($row['role'] == 'user') ? 'checked' : ''; ?>>
+
                 <div class="form-group">
                         <label for="email"> Số dư tài khoản </label>
                         <input type="text" name="balance" class="form-control" value="<?php echo $row['balance'] ?>">

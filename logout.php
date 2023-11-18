@@ -1,6 +1,8 @@
 <?php
 session_start();
+
 setcookie('username', '', time() - 3600, "/");
+setcookie('token', '', time() - 3600, "/");
 
 // Hủy bỏ phiên đăng nhập
 session_unset();

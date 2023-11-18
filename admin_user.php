@@ -64,6 +64,7 @@ $result = mysqli_query($conn, $query);
                     <th> Gmail </th>
                     <th> Giới tính </th>
                     <th> Hạng tài khoản </th>
+                    <th> Vai trò </th>
                     <th> Số dư tài khoản </th>
                     <th> Thao tác </th>
                 </tr>
@@ -79,6 +80,7 @@ $result = mysqli_query($conn, $query);
                     <td><?php echo $r['email']; ?></td>
                     <td><?php echo $r['gender']; ?></td>
                     <td><?php echo $r['rank']; ?></td>
+                    <td><?php echo $r['role']; ?></td>
                     <td><?php echo $r['balance']; ?></td>
                     <td>
                         <a href="admin_edit_user.php?uid=<?php echo $r['uid']; ?>" class="btn btn-primary">Sửa</a>
@@ -127,6 +129,8 @@ $result = mysqli_query($conn, $query);
                     <h2>Bạc</h2>
                     <input type="radio" name="rank" value="bronze">
                     <h2>Đồng</h2>
+                    <input type="radio" name="rank" value="no rank">
+                    <h2>Không có</h2>
                 </div>
                 <div class="form-group">
                     <i class="far fa-user"></i>

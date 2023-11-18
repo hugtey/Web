@@ -1,15 +1,5 @@
-<?php
-session_start();
-if (isset($_SESSION['uid'])) {
-  // Nếu đã đăng nhập, chuyển hướng đến trang user.php hoặc admin.php tùy vào quyền
-  if ($_SESSION['username'] == 'admin') {
-    header('Location: admin_product.php');
-  } else {
-    header('Location: user.php');
-  }
-  exit();
-}
-?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +15,30 @@ if (isset($_SESSION['uid'])) {
 <body>
   <div id="wrapper">
 
+  <?php
+    session_start();
+    include 'connect.php';
+
+    if (isset($_COOKIE['token'])) {
+      $token = $_COOKIE['token'];
+
+      $sql_check_token = "SELECT * FROM tbl_users WHERE token = '$token'";
+      $result_check_token = mysqli_query($conn, $sql_check_token);
+
+      if (mysqli_num_rows($result_check_token) > 0) {
+        $row_token = mysqli_fetch_assoc($result_check_token);
+        
+        if ($row_token['role'] == 'admin') {
+          header('Location: admin_product.php');
+        } else {
+          header('Location: user.php');
+        }
+      }
+    }
+
+    mysqli_close($conn);
+  ?>
+  
     <form action="register.php" method="POST" id="form-signup">
       <h1 class="form-heading">Form đăng ký</h1>
       <div class="form-group">
