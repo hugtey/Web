@@ -6,6 +6,10 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
     $email = $_POST['email'];
     $gender = $_POST['gender'];
+    $rank = $_POST['rank'];
+    $role = $_POST['role'];
+    $balance = $_POST['balance'];
+
 
 
     if (!empty($username) && !empty($fullname) && !empty($password) && !empty($email) && !empty($gender)) {

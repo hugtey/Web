@@ -2,9 +2,32 @@
 session_start();
 $conn = mysqli_connect("localhost", "root", "", "hungtran");
 
-if (!isset($_SESSION['uid'])) {
+if (!isset($_SESSION['uid']) && !isset($_COOKIE['token'])) {
     header('Location: index.php');
     exit();
+}
+
+// Nếu có cookie token, kiểm tra và xác định vai trò của người dùng
+if (!isset($_SESSION['uid']) && isset($_COOKIE['token'])) {
+    $token = $_COOKIE['token'];
+    $sql_check_token = "SELECT * FROM tbl_users WHERE token = '$token'";
+    $result_check_token = mysqli_query($conn, $sql_check_token);
+    if (mysqli_num_rows($result_check_token) > 0) {
+        $row_token = mysqli_fetch_assoc($result_check_token);
+
+        $_SESSION['uid'] = $row_token['uid'];
+        $_SESSION['username'] = $row_token['username'];
+        $_SESSION['role'] = $row_token['role'];
+
+        if ($row_token['role'] == 'user') {
+            header('Location: user.php');
+            exit();
+        }
+    } else {
+        // Nếu không tìm thấy thông tin từ token, đăng xuất và chuyển hướng đến trang đăng nhập
+        header('Location: logout.php');
+        exit();
+    }
 }
 if (isset($_GET['name_product'])) {
     $name_product = $_GET['name_product'];

@@ -18,20 +18,18 @@
   <?php
     session_start();
     include 'connect.php';
-
     if (isset($_COOKIE['token'])) {
       $token = $_COOKIE['token'];
-
       $sql_check_token = "SELECT * FROM tbl_users WHERE token = '$token'";
       $result_check_token = mysqli_query($conn, $sql_check_token);
-
       if (mysqli_num_rows($result_check_token) > 0) {
         $row_token = mysqli_fetch_assoc($result_check_token);
-        
         if ($row_token['role'] == 'admin') {
           header('Location: admin_product.php');
+          exit();
         } else {
           header('Location: user.php');
+          exit();
         }
       }
     }
@@ -91,3 +89,4 @@
 </body>
 
 </html>
+
